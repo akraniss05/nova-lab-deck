@@ -52,3 +52,19 @@ jobs:
             out/portable/NovaLabDeck.exe
             out/NovaLabDeck-Setup-x64.exe
             out/native-probe.json
+  distribute:
+    if: github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Distribute v0.1.0-beta.1')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: NovaLab-Deck-Windows-x64
+          path: binaries
+      - name: Publish tested Windows binaries
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release create v0.1.0-beta.1 binaries/NovaLabDeck-Setup-x64.exe binaries/portable/NovaLabDeck.exe --target "$GITHUB_SHA" --prerelease --title "NovaLab Deck 0.1.0 Beta 1" --notes "Windows x64. Setup oder portable EXE herunterladen. Startanleitung und Testbericht stehen im Repository."
