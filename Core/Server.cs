@@ -121,14 +121,19 @@ public sealed class Server : IAsyncDisposable {
         switch(m.Op){
         case "info":return new{role=d.Role,board=b,catalog=platform.Catalog(),actions=Model.Kinds};
         case "logs":return log.ToArray();
+        case "preview":
+            Limit("preview:"+d.Id,6,10);
+            var scene=(await obs.Call("GetCurrentProgramScene",null,ct))["currentProgramSceneName"]!.ToString();
+            return (await obs.Call("GetSourceScreenshot",new{sourceName=scene,imageFormat="jpeg",imageWidth=640,imageCompressionQuality=75},ct))["imageData"]!.ToString();
         case "save":case "restore":
             if(d.Role=="control")throw new UnauthorizedAccessException();
             var next=m.Op=="save"?Store.Save(data.Deserialize<Board>(Model.Json)??throw new ArgumentException()):Store.Restore();await Broadcast(new{type="board",board=next});return new{revision=next.Revision};
         case "cancel":if(jobs.TryGetValue(d.Id,out var j))j.Cancel();return "Abbruch angefordert";
-        case "run":case "key":case "dry":break;
+        case "run":case "key":case "dry":case "test":break;
         default:throw new ArgumentException("Befehl unbekannt");}
         List<Step> steps;
-        if(m.Op=="key"||m.Op=="dry"){
+        if(m.Op=="test"){if(d.Role=="control")throw new UnauthorizedAccessException();steps=data.Deserialize<List<Step>>(Model.Json)??throw new ArgumentException();Model.Require(steps.Count is >0 and <=32,"1–32 Schritte erforderlich");foreach(var s in steps)Model.Check(s);}
+        else if(m.Op=="key"||m.Op=="dry"){
             Model.Require(data.GetProperty("revision").GetInt64()==b.Revision,"Deck geändert. Erneut auswählen.");
             var page=b.Profiles.Single(p=>p.Id==b.Active).Pages.Single(p=>p.Id==Str(data,"page"));var index=data.GetProperty("slot").GetInt32();Model.Require(index is >=0 and <15,"Slot ungültig");
             var k=page.Keys[index];var s=Str(data,"gesture") switch{"hold"=>k.Hold,"double"=>k.Double,_=>k.Action};steps=s?.Kind=="macro"?k.Macro??[]:s==null?[]:[s];

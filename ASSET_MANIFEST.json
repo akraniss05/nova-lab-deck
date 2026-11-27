@@ -1,0 +1,1649 @@
+[
+ {
+  "id": "stream",
+  "name": "Stream starten",
+  "category": "Streaming",
+  "file": "assets/stream.webp",
+  "master": "Artwork/Masters/stream.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "record",
+  "name": "Aufnahme",
+  "category": "Streaming",
+  "file": "assets/record.webp",
+  "master": "Artwork/Masters/record.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "mic",
+  "name": "Studio-Mikrofon",
+  "category": "Streaming",
+  "file": "assets/mic.webp",
+  "master": "Artwork/Masters/mic.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "cam",
+  "name": "Webcam",
+  "category": "Streaming",
+  "file": "assets/cam.webp",
+  "master": "Artwork/Masters/cam.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "sunset",
+  "name": "Szene · Berge",
+  "category": "Streaming",
+  "file": "assets/sunset.webp",
+  "master": "Artwork/Masters/sunset.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "city",
+  "name": "Szene · Skyline",
+  "category": "Streaming",
+  "file": "assets/city.webp",
+  "master": "Artwork/Masters/city.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "coffee",
+  "name": "BRB",
+  "category": "Streaming",
+  "file": "assets/coffee.webp",
+  "master": "Artwork/Masters/coffee.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "chat",
+  "name": "Chat",
+  "category": "Streaming",
+  "file": "assets/chat.webp",
+  "master": "Artwork/Masters/chat.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "tiktok",
+  "name": "TikTok LIVE Studio",
+  "category": "Streaming",
+  "file": "assets/tiktok.webp",
+  "master": "Artwork/Masters/tiktok.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "discord",
+  "name": "Discord",
+  "category": "Kommunikation",
+  "file": "assets/discord.webp",
+  "master": "Artwork/Masters/discord.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "spotify",
+  "name": "Spotify",
+  "category": "Musik",
+  "file": "assets/spotify.webp",
+  "master": "Artwork/Masters/spotify.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "quieter",
+  "name": "Lautstärke −",
+  "category": "Audio",
+  "file": "assets/quieter.webp",
+  "master": "Artwork/Masters/quieter.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "louder",
+  "name": "Lautstärke +",
+  "category": "Audio",
+  "file": "assets/louder.webp",
+  "master": "Artwork/Masters/louder.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "pads",
+  "name": "Soundboard",
+  "category": "Audio",
+  "file": "assets/pads.webp",
+  "master": "Artwork/Masters/pads.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "macro",
+  "name": "Multi-Aktion",
+  "category": "Automation",
+  "file": "assets/macro.webp",
+  "master": "Artwork/Masters/macro.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "tower",
+  "name": "Windows Host",
+  "category": "Windows",
+  "file": "assets/tower.webp",
+  "master": "Artwork/Masters/tower.webp",
+  "origin": "NovaLab · generated 3D artwork"
+ },
+ {
+  "id": "radio",
+  "name": "radio",
+  "category": "Streaming",
+  "file": "assets/radio.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "tower-control",
+  "name": "tower control",
+  "category": "Streaming",
+  "file": "assets/tower-control.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "video",
+  "name": "video",
+  "category": "Streaming",
+  "file": "assets/video.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "video-off",
+  "name": "video off",
+  "category": "Streaming",
+  "file": "assets/video-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "airplay",
+  "name": "airplay",
+  "category": "Streaming",
+  "file": "assets/airplay.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "cast",
+  "name": "cast",
+  "category": "Streaming",
+  "file": "assets/cast.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "clapperboard",
+  "name": "clapperboard",
+  "category": "Streaming",
+  "file": "assets/clapperboard.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "camera",
+  "name": "camera",
+  "category": "Streaming",
+  "file": "assets/camera.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "aperture",
+  "name": "aperture",
+  "category": "Streaming",
+  "file": "assets/aperture.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "film",
+  "name": "film",
+  "category": "Streaming",
+  "file": "assets/film.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "focus",
+  "name": "focus",
+  "category": "Streaming",
+  "file": "assets/focus.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "frame",
+  "name": "frame",
+  "category": "Streaming",
+  "file": "assets/frame.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "images",
+  "name": "images",
+  "category": "Streaming",
+  "file": "assets/images.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "image-play",
+  "name": "image play",
+  "category": "Streaming",
+  "file": "assets/image-play.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "picture-in-picture",
+  "name": "picture in picture",
+  "category": "Streaming",
+  "file": "assets/picture-in-picture.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "panels-top-left",
+  "name": "panels top left",
+  "category": "Streaming",
+  "file": "assets/panels-top-left.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gallery-horizontal-end",
+  "name": "gallery horizontal end",
+  "category": "Streaming",
+  "file": "assets/gallery-horizontal-end.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gallery-vertical-end",
+  "name": "gallery vertical end",
+  "category": "Streaming",
+  "file": "assets/gallery-vertical-end.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "layers",
+  "name": "layers",
+  "category": "Streaming",
+  "file": "assets/layers.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "layers-plus",
+  "name": "layers plus",
+  "category": "Streaming",
+  "file": "assets/layers-plus.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "monitor-play",
+  "name": "monitor play",
+  "category": "Streaming",
+  "file": "assets/monitor-play.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "monitor-stop",
+  "name": "monitor stop",
+  "category": "Streaming",
+  "file": "assets/monitor-stop.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "projector",
+  "name": "projector",
+  "category": "Streaming",
+  "file": "assets/projector.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "scan-eye",
+  "name": "scan eye",
+  "category": "Streaming",
+  "file": "assets/scan-eye.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "screen-share",
+  "name": "screen share",
+  "category": "Streaming",
+  "file": "assets/screen-share.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "tv-minimal-play",
+  "name": "tv minimal play",
+  "category": "Streaming",
+  "file": "assets/tv-minimal-play.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "webcam",
+  "name": "webcam",
+  "category": "Streaming",
+  "file": "assets/webcam.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "circle-stop",
+  "name": "circle stop",
+  "category": "Streaming",
+  "file": "assets/circle-stop.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "circle-pause",
+  "name": "circle pause",
+  "category": "Streaming",
+  "file": "assets/circle-pause.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "disc-2",
+  "name": "disc 2",
+  "category": "Streaming",
+  "file": "assets/disc-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "rewind",
+  "name": "rewind",
+  "category": "Streaming",
+  "file": "assets/rewind.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "switch-camera",
+  "name": "switch camera",
+  "category": "Streaming",
+  "file": "assets/switch-camera.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "square-play",
+  "name": "square play",
+  "category": "Streaming",
+  "file": "assets/square-play.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "subtitles",
+  "name": "subtitles",
+  "category": "Streaming",
+  "file": "assets/subtitles.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "speech",
+  "name": "speech",
+  "category": "Streaming",
+  "file": "assets/speech.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "mic-vocal",
+  "name": "mic vocal",
+  "category": "Audio",
+  "file": "assets/mic-vocal.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "mic-off",
+  "name": "mic off",
+  "category": "Audio",
+  "file": "assets/mic-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "audio-lines",
+  "name": "audio lines",
+  "category": "Audio",
+  "file": "assets/audio-lines.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "audio-waveform",
+  "name": "audio waveform",
+  "category": "Audio",
+  "file": "assets/audio-waveform.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volume",
+  "name": "volume",
+  "category": "Audio",
+  "file": "assets/volume.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volume-1",
+  "name": "volume 1",
+  "category": "Audio",
+  "file": "assets/volume-1.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volume-2",
+  "name": "volume 2",
+  "category": "Audio",
+  "file": "assets/volume-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volume-x",
+  "name": "volume x",
+  "category": "Audio",
+  "file": "assets/volume-x.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volume-off",
+  "name": "volume off",
+  "category": "Audio",
+  "file": "assets/volume-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "headphones",
+  "name": "headphones",
+  "category": "Audio",
+  "file": "assets/headphones.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "headphone-off",
+  "name": "headphone off",
+  "category": "Audio",
+  "file": "assets/headphone-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "speaker",
+  "name": "speaker",
+  "category": "Audio",
+  "file": "assets/speaker.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "ear",
+  "name": "ear",
+  "category": "Audio",
+  "file": "assets/ear.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "ear-off",
+  "name": "ear off",
+  "category": "Audio",
+  "file": "assets/ear-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "sliders-horizontal",
+  "name": "sliders horizontal",
+  "category": "Audio",
+  "file": "assets/sliders-horizontal.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "sliders-vertical",
+  "name": "sliders vertical",
+  "category": "Audio",
+  "file": "assets/sliders-vertical.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "list-music",
+  "name": "list music",
+  "category": "Audio",
+  "file": "assets/list-music.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "podcast",
+  "name": "podcast",
+  "category": "Audio",
+  "file": "assets/podcast.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "radio-tower",
+  "name": "radio tower",
+  "category": "Audio",
+  "file": "assets/radio-tower.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "cable",
+  "name": "cable",
+  "category": "Audio",
+  "file": "assets/cable.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "music",
+  "name": "music",
+  "category": "Musik",
+  "file": "assets/music.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "music-2",
+  "name": "music 2",
+  "category": "Musik",
+  "file": "assets/music-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "music-3",
+  "name": "music 3",
+  "category": "Musik",
+  "file": "assets/music-3.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "music-4",
+  "name": "music 4",
+  "category": "Musik",
+  "file": "assets/music-4.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "disc",
+  "name": "disc",
+  "category": "Musik",
+  "file": "assets/disc.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "disc-3",
+  "name": "disc 3",
+  "category": "Musik",
+  "file": "assets/disc-3.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "disc-album",
+  "name": "disc album",
+  "category": "Musik",
+  "file": "assets/disc-album.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "play",
+  "name": "play",
+  "category": "Musik",
+  "file": "assets/play.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "pause",
+  "name": "pause",
+  "category": "Musik",
+  "file": "assets/pause.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "square",
+  "name": "square",
+  "category": "Musik",
+  "file": "assets/square.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "skip-forward",
+  "name": "skip forward",
+  "category": "Musik",
+  "file": "assets/skip-forward.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "skip-back",
+  "name": "skip back",
+  "category": "Musik",
+  "file": "assets/skip-back.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "fast-forward",
+  "name": "fast forward",
+  "category": "Musik",
+  "file": "assets/fast-forward.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "shuffle",
+  "name": "shuffle",
+  "category": "Musik",
+  "file": "assets/shuffle.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "repeat",
+  "name": "repeat",
+  "category": "Musik",
+  "file": "assets/repeat.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "repeat-1",
+  "name": "repeat 1",
+  "category": "Musik",
+  "file": "assets/repeat-1.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "album",
+  "name": "album",
+  "category": "Musik",
+  "file": "assets/album.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "list-video",
+  "name": "list video",
+  "category": "Musik",
+  "file": "assets/list-video.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "piano",
+  "name": "piano",
+  "category": "Musik",
+  "file": "assets/piano.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "guitar",
+  "name": "guitar",
+  "category": "Musik",
+  "file": "assets/guitar.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "drum",
+  "name": "drum",
+  "category": "Musik",
+  "file": "assets/drum.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "boom-box",
+  "name": "boom box",
+  "category": "Musik",
+  "file": "assets/boom-box.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "turntable",
+  "name": "turntable",
+  "category": "Musik",
+  "file": "assets/turntable.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gamepad",
+  "name": "gamepad",
+  "category": "Gaming",
+  "file": "assets/gamepad.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gamepad-2",
+  "name": "gamepad 2",
+  "category": "Gaming",
+  "file": "assets/gamepad-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "joystick",
+  "name": "joystick",
+  "category": "Gaming",
+  "file": "assets/joystick.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "rocket",
+  "name": "rocket",
+  "category": "Gaming",
+  "file": "assets/rocket.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "swords",
+  "name": "swords",
+  "category": "Gaming",
+  "file": "assets/swords.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "crosshair",
+  "name": "crosshair",
+  "category": "Gaming",
+  "file": "assets/crosshair.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "target",
+  "name": "target",
+  "category": "Gaming",
+  "file": "assets/target.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "bomb",
+  "name": "bomb",
+  "category": "Gaming",
+  "file": "assets/bomb.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "trophy",
+  "name": "trophy",
+  "category": "Gaming",
+  "file": "assets/trophy.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "crown",
+  "name": "crown",
+  "category": "Gaming",
+  "file": "assets/crown.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "dice-5",
+  "name": "dice 5",
+  "category": "Gaming",
+  "file": "assets/dice-5.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "boxes",
+  "name": "boxes",
+  "category": "Gaming",
+  "file": "assets/boxes.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "pickaxe",
+  "name": "pickaxe",
+  "category": "Gaming",
+  "file": "assets/pickaxe.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "castle",
+  "name": "castle",
+  "category": "Gaming",
+  "file": "assets/castle.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "sword",
+  "name": "sword",
+  "category": "Gaming",
+  "file": "assets/sword.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "shield-ellipsis",
+  "name": "shield ellipsis",
+  "category": "Gaming",
+  "file": "assets/shield-ellipsis.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "car-front",
+  "name": "car front",
+  "category": "Gaming",
+  "file": "assets/car-front.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "goal",
+  "name": "goal",
+  "category": "Gaming",
+  "file": "assets/goal.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "volleyball",
+  "name": "volleyball",
+  "category": "Gaming",
+  "file": "assets/volleyball.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "orbit",
+  "name": "orbit",
+  "category": "Gaming",
+  "file": "assets/orbit.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "flame",
+  "name": "flame",
+  "category": "Gaming",
+  "file": "assets/flame.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "ghost",
+  "name": "ghost",
+  "category": "Gaming",
+  "file": "assets/ghost.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gem",
+  "name": "gem",
+  "category": "Gaming",
+  "file": "assets/gem.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "tent-tree",
+  "name": "tent tree",
+  "category": "Gaming",
+  "file": "assets/tent-tree.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "mountain-snow",
+  "name": "mountain snow",
+  "category": "Gaming",
+  "file": "assets/mountain-snow.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "messages-square",
+  "name": "messages square",
+  "category": "Kommunikation",
+  "file": "assets/messages-square.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "message-circle",
+  "name": "message circle",
+  "category": "Kommunikation",
+  "file": "assets/message-circle.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "message-square-text",
+  "name": "message square text",
+  "category": "Kommunikation",
+  "file": "assets/message-square-text.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "message-square-more",
+  "name": "message square more",
+  "category": "Kommunikation",
+  "file": "assets/message-square-more.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "phone",
+  "name": "phone",
+  "category": "Kommunikation",
+  "file": "assets/phone.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "phone-call",
+  "name": "phone call",
+  "category": "Kommunikation",
+  "file": "assets/phone-call.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "phone-off",
+  "name": "phone off",
+  "category": "Kommunikation",
+  "file": "assets/phone-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "send",
+  "name": "send",
+  "category": "Kommunikation",
+  "file": "assets/send.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "mail",
+  "name": "mail",
+  "category": "Kommunikation",
+  "file": "assets/mail.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "headset",
+  "name": "headset",
+  "category": "Kommunikation",
+  "file": "assets/headset.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "contact",
+  "name": "contact",
+  "category": "Kommunikation",
+  "file": "assets/contact.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "users",
+  "name": "users",
+  "category": "Kommunikation",
+  "file": "assets/users.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "megaphone",
+  "name": "megaphone",
+  "category": "Kommunikation",
+  "file": "assets/megaphone.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "bell-ring",
+  "name": "bell ring",
+  "category": "Kommunikation",
+  "file": "assets/bell-ring.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "presentation",
+  "name": "presentation",
+  "category": "Kommunikation",
+  "file": "assets/presentation.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "code",
+  "name": "code",
+  "category": "Entwicklung",
+  "file": "assets/code.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "code-xml",
+  "name": "code xml",
+  "category": "Entwicklung",
+  "file": "assets/code-xml.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "terminal",
+  "name": "terminal",
+  "category": "Entwicklung",
+  "file": "assets/terminal.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "square-terminal",
+  "name": "square terminal",
+  "category": "Entwicklung",
+  "file": "assets/square-terminal.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "braces",
+  "name": "braces",
+  "category": "Entwicklung",
+  "file": "assets/braces.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "brackets",
+  "name": "brackets",
+  "category": "Entwicklung",
+  "file": "assets/brackets.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "git-branch",
+  "name": "git branch",
+  "category": "Entwicklung",
+  "file": "assets/git-branch.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "git-fork",
+  "name": "git fork",
+  "category": "Entwicklung",
+  "file": "assets/git-fork.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "git-pull-request",
+  "name": "git pull request",
+  "category": "Entwicklung",
+  "file": "assets/git-pull-request.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "box",
+  "name": "box",
+  "category": "Entwicklung",
+  "file": "assets/box.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "panels-left-bottom",
+  "name": "panels left bottom",
+  "category": "Entwicklung",
+  "file": "assets/panels-left-bottom.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "bug",
+  "name": "bug",
+  "category": "Entwicklung",
+  "file": "assets/bug.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "database",
+  "name": "database",
+  "category": "Entwicklung",
+  "file": "assets/database.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "binary",
+  "name": "binary",
+  "category": "Entwicklung",
+  "file": "assets/binary.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "container",
+  "name": "container",
+  "category": "Entwicklung",
+  "file": "assets/container.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "file-json",
+  "name": "file json",
+  "category": "Entwicklung",
+  "file": "assets/file-json.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "file-code-2",
+  "name": "file code 2",
+  "category": "Entwicklung",
+  "file": "assets/file-code-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "construction",
+  "name": "construction",
+  "category": "Entwicklung",
+  "file": "assets/construction.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "cpu",
+  "name": "cpu",
+  "category": "Entwicklung",
+  "file": "assets/cpu.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "circuit-board",
+  "name": "circuit board",
+  "category": "Entwicklung",
+  "file": "assets/circuit-board.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "wrench",
+  "name": "wrench",
+  "category": "Entwicklung",
+  "file": "assets/wrench.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "network",
+  "name": "network",
+  "category": "Entwicklung",
+  "file": "assets/network.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "folders",
+  "name": "folders",
+  "category": "Windows",
+  "file": "assets/folders.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "folder-open",
+  "name": "folder open",
+  "category": "Windows",
+  "file": "assets/folder-open.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "files",
+  "name": "files",
+  "category": "Windows",
+  "file": "assets/files.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "file-search",
+  "name": "file search",
+  "category": "Windows",
+  "file": "assets/file-search.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "hard-drive",
+  "name": "hard drive",
+  "category": "Windows",
+  "file": "assets/hard-drive.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "monitor-cog",
+  "name": "monitor cog",
+  "category": "Windows",
+  "file": "assets/monitor-cog.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "settings",
+  "name": "settings",
+  "category": "Windows",
+  "file": "assets/settings.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "clipboard",
+  "name": "clipboard",
+  "category": "Windows",
+  "file": "assets/clipboard.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "clipboard-list",
+  "name": "clipboard list",
+  "category": "Windows",
+  "file": "assets/clipboard-list.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "monitor",
+  "name": "monitor",
+  "category": "Windows",
+  "file": "assets/monitor.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "memory-stick",
+  "name": "memory stick",
+  "category": "Windows",
+  "file": "assets/memory-stick.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "ethernet-port",
+  "name": "ethernet port",
+  "category": "Windows",
+  "file": "assets/ethernet-port.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "lock-keyhole",
+  "name": "lock keyhole",
+  "category": "Windows",
+  "file": "assets/lock-keyhole.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "rotate-cw",
+  "name": "rotate cw",
+  "category": "Windows",
+  "file": "assets/rotate-cw.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "power",
+  "name": "power",
+  "category": "Windows",
+  "file": "assets/power.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "power-off",
+  "name": "power off",
+  "category": "Windows",
+  "file": "assets/power-off.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "bluetooth",
+  "name": "bluetooth",
+  "category": "Windows",
+  "file": "assets/bluetooth.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "wifi",
+  "name": "wifi",
+  "category": "Windows",
+  "file": "assets/wifi.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "app-window",
+  "name": "app window",
+  "category": "Windows",
+  "file": "assets/app-window.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "maximize-2",
+  "name": "maximize 2",
+  "category": "Windows",
+  "file": "assets/maximize-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "minimize-2",
+  "name": "minimize 2",
+  "category": "Windows",
+  "file": "assets/minimize-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "x-square",
+  "name": "x square",
+  "category": "Windows",
+  "file": "assets/x-square.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "activity",
+  "name": "activity",
+  "category": "Windows",
+  "file": "assets/activity.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "gauge",
+  "name": "gauge",
+  "category": "Windows",
+  "file": "assets/gauge.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "thermometer",
+  "name": "thermometer",
+  "category": "Windows",
+  "file": "assets/thermometer.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "chart-no-axes-combined",
+  "name": "chart no axes combined",
+  "category": "Windows",
+  "file": "assets/chart-no-axes-combined.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "server",
+  "name": "server",
+  "category": "Windows",
+  "file": "assets/server.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "usb",
+  "name": "usb",
+  "category": "Windows",
+  "file": "assets/usb.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "printer",
+  "name": "printer",
+  "category": "Windows",
+  "file": "assets/printer.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "keyboard",
+  "name": "keyboard",
+  "category": "Windows",
+  "file": "assets/keyboard.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "mouse",
+  "name": "mouse",
+  "category": "Windows",
+  "file": "assets/mouse.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "laptop",
+  "name": "laptop",
+  "category": "Windows",
+  "file": "assets/laptop.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "globe",
+  "name": "globe",
+  "category": "Windows",
+  "file": "assets/globe.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "workflow",
+  "name": "workflow",
+  "category": "Automation",
+  "file": "assets/workflow.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "timer",
+  "name": "timer",
+  "category": "Automation",
+  "file": "assets/timer.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "timer-reset",
+  "name": "timer reset",
+  "category": "Automation",
+  "file": "assets/timer-reset.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "alarm-clock",
+  "name": "alarm clock",
+  "category": "Automation",
+  "file": "assets/alarm-clock.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "hourglass",
+  "name": "hourglass",
+  "category": "Automation",
+  "file": "assets/hourglass.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "watch",
+  "name": "watch",
+  "category": "Automation",
+  "file": "assets/watch.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "clock-3",
+  "name": "clock 3",
+  "category": "Automation",
+  "file": "assets/clock-3.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "list-ordered",
+  "name": "list ordered",
+  "category": "Automation",
+  "file": "assets/list-ordered.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "copy-plus",
+  "name": "copy plus",
+  "category": "Automation",
+  "file": "assets/copy-plus.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "split",
+  "name": "split",
+  "category": "Automation",
+  "file": "assets/split.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "merge",
+  "name": "merge",
+  "category": "Automation",
+  "file": "assets/merge.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "repeat-2",
+  "name": "repeat 2",
+  "category": "Automation",
+  "file": "assets/repeat-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "route",
+  "name": "route",
+  "category": "Automation",
+  "file": "assets/route.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "folder-tree",
+  "name": "folder tree",
+  "category": "Automation",
+  "file": "assets/folder-tree.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "folder-plus",
+  "name": "folder plus",
+  "category": "Automation",
+  "file": "assets/folder-plus.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "panel-top",
+  "name": "panel top",
+  "category": "Automation",
+  "file": "assets/panel-top.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "panel-left",
+  "name": "panel left",
+  "category": "Automation",
+  "file": "assets/panel-left.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "key-round",
+  "name": "key round",
+  "category": "Automation",
+  "file": "assets/key-round.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "toggle-right",
+  "name": "toggle right",
+  "category": "Automation",
+  "file": "assets/toggle-right.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "list-checks",
+  "name": "list checks",
+  "category": "Automation",
+  "file": "assets/list-checks.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "zap",
+  "name": "zap",
+  "category": "Automation",
+  "file": "assets/zap.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "scan-line",
+  "name": "scan line",
+  "category": "Automation",
+  "file": "assets/scan-line.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "fingerprint",
+  "name": "fingerprint",
+  "category": "Automation",
+  "file": "assets/fingerprint.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "shield-check",
+  "name": "shield check",
+  "category": "Automation",
+  "file": "assets/shield-check.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "archive",
+  "name": "archive",
+  "category": "Automation",
+  "file": "assets/archive.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "download",
+  "name": "download",
+  "category": "Automation",
+  "file": "assets/download.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "upload",
+  "name": "upload",
+  "category": "Automation",
+  "file": "assets/upload.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "save",
+  "name": "save",
+  "category": "Automation",
+  "file": "assets/save.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "history",
+  "name": "history",
+  "category": "Automation",
+  "file": "assets/history.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "undo-2",
+  "name": "undo 2",
+  "category": "Automation",
+  "file": "assets/undo-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "redo-2",
+  "name": "redo 2",
+  "category": "Automation",
+  "file": "assets/redo-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "compass",
+  "name": "compass",
+  "category": "Browser",
+  "file": "assets/compass.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "globe-2",
+  "name": "globe 2",
+  "category": "Browser",
+  "file": "assets/globe-2.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "earth",
+  "name": "earth",
+  "category": "Browser",
+  "file": "assets/earth.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "link",
+  "name": "link",
+  "category": "Browser",
+  "file": "assets/link.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "external-link",
+  "name": "external link",
+  "category": "Browser",
+  "file": "assets/external-link.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "bookmark",
+  "name": "bookmark",
+  "category": "Browser",
+  "file": "assets/bookmark.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "search",
+  "name": "search",
+  "category": "Browser",
+  "file": "assets/search.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "navigation",
+  "name": "navigation",
+  "category": "Browser",
+  "file": "assets/navigation.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "book-open",
+  "name": "book open",
+  "category": "Browser",
+  "file": "assets/book-open.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "newspaper",
+  "name": "newspaper",
+  "category": "Browser",
+  "file": "assets/newspaper.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "rss",
+  "name": "rss",
+  "category": "Browser",
+  "file": "assets/rss.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "binoculars",
+  "name": "binoculars",
+  "category": "Browser",
+  "file": "assets/binoculars.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "panel-top-open",
+  "name": "panel top open",
+  "category": "Browser",
+  "file": "assets/panel-top-open.svg",
+  "origin": "Lucide geometry · NovaLab layered vector"
+ }
+]

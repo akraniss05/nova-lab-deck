@@ -1,4 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
 <PropertyGroup><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
-<ItemGroup><FrameworkReference Include="Microsoft.AspNetCore.App"/><EmbeddedResource Include="../Web/**/*" LogicalName="web/%(RecursiveDir)%(Filename)%(Extension)" /></ItemGroup>
+<ItemGroup><EmbeddedResource Include="../ASSET_MANIFEST.json" LogicalName="web/ASSET_MANIFEST.json"/><FrameworkReference Include="Microsoft.AspNetCore.App"/><EmbeddedResource Include="../Web/**/*" LogicalName="web/%(RecursiveDir)%(Filename)%(Extension)" /></ItemGroup>
 </Project>
