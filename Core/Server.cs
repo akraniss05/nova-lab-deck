@@ -24,6 +24,8 @@ public sealed class Server : IAsyncDisposable {
     readonly IPlatform platform;
     readonly Obs obs;
     readonly WebApplication web;
+    static readonly Dictionary<string,string> Resources=typeof(Server).Assembly.GetManifestResourceNames()
+        .ToDictionary(name=>name.Replace('\\','/'),name=>name,StringComparer.Ordinal);
     readonly CancellationTokenSource end=new();
     readonly ConcurrentDictionary<string,Device> devices=new();
     readonly object security=new();
@@ -63,7 +65,8 @@ public sealed class Server : IAsyncDisposable {
         web.MapPost("/cmd",async(HttpContext c)=>{var d=Auth(c);Limit(d.Id,180,10);var m=await c.Request.ReadFromJsonAsync<Msg>()??throw new ArgumentException();return Results.Json(await Dispatch(d,m,c.RequestAborted),Model.Json);});
         web.MapGet("/ws",Socket);
         web.MapGet("/{**path}",(HttpContext c,string? path)=>{
-            var key="web/"+(string.IsNullOrWhiteSpace(path)?"index.html":path);var stream=typeof(Server).Assembly.GetManifestResourceStream(key)??typeof(Server).Assembly.GetManifestResourceStream(key.Replace('/','\\'));
+            var key="web/"+(string.IsNullOrWhiteSpace(path)?"index.html":path);if(!Resources.TryGetValue(key,out var resource))return Results.NotFound();
+            var stream=typeof(Server).Assembly.GetManifestResourceStream(resource);
             if(stream==null)return Results.NotFound();var ext=Path.GetExtension(key);return Results.Stream(stream,ext switch{".js"=>"text/javascript",".css"=>"text/css",".json"=>"application/json",".svg"=>"image/svg+xml",".webp"=>"image/webp",".png"=>"image/png",".webmanifest"=>"application/manifest+json",_=>"text/html"});});
     }
     static string Error(Exception ex)=>ex is UnauthorizedAccessException?"Zugriff verweigert":ex.GetBaseException().Message;
