@@ -33,6 +33,7 @@ public sealed class Mixer(string dir) {
     });
     Dictionary<string,Dictionary<string,int>> Presets(){var file=Path.Combine(dir,"audio-presets.json");return File.Exists(file)?JsonSerializer.Deserialize<Dictionary<string,Dictionary<string,int>>>(File.ReadAllText(file))??new():new();}
     public string Change(Step step)=>With((e,groups)=>{
+        if(step.Kind=="audio.default")return EndpointPolicy.Set(e,step.Target,step.Value);
         if(step.Kind=="audio.preset"){
             Model.Require(step.Target.Length is >0 and <=60,"Presetname erforderlich");var presets=Presets();
             if(step.Value=="save"){var values=groups.ToDictionary(x=>x.Key,x=>Pct(x.Value.Items.Average(s=>s.SimpleAudioVolume.Volume)));foreach(var ep in Endpoints){try{using var d=e.GetDefaultAudioEndpoint(ep.Flow,Role.Multimedia);values[ep.Id]=Pct(d.AudioEndpointVolume.MasterVolumeLevelScalar);}catch(System.Runtime.InteropServices.COMException){}}

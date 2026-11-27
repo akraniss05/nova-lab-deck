@@ -1,11 +1,11 @@
 Unicode True
 Name "NovaLab Deck"
-OutFile "../out/NovaLabDeck-Setup-x64.exe"
+OutFile "..\out\NovaLabDeck-Setup-x64.exe"
 InstallDir "$LOCALAPPDATA\Programs\NovaLab Deck"
 RequestExecutionLevel user
 SetCompressor zlib
-Icon "../Host/deck.ico"
-UninstallIcon "../Host/deck.ico"
+Icon "..\Host\deck.ico"
+UninstallIcon "..\Host\deck.ico"
 !include "MUI2.nsh"
 !define MUI_ABORTWARNING
 !define MUI_FINISHPAGE_RUN "$INSTDIR\NovaLabDeck.exe"
@@ -18,7 +18,7 @@ UninstallIcon "../Host/deck.ico"
 !insertmacro MUI_LANGUAGE "English"
 Section "NovaLab Deck"
  SetOutPath "$INSTDIR"
- File "../out/portable/NovaLabDeck.exe"
+ File "..\out\portable\NovaLabDeck.exe"
  WriteUninstaller "$INSTDIR\Uninstall.exe"
  CreateDirectory "$SMPROGRAMS\NovaLab Deck"
  CreateShortcut "$SMPROGRAMS\NovaLab Deck\NovaLab Deck.lnk" "$INSTDIR\NovaLabDeck.exe"

@@ -101,17 +101,34 @@ public sealed class Server : IAsyncDisposable {
     async Task Socket(HttpContext c){
         var d=Auth(c);Limit("ws:"+d.Id,12,30);if(!c.WebSockets.IsWebSocketRequest||peers.Count>=32){c.Response.StatusCode=400;return;}
         using var ws=await c.WebSockets.AcceptWebSocketAsync();using var p=new Peer(ws,d);var id=Guid.NewGuid();peers[id]=p;var buf=new byte[8192];
+        CancellationTokenSource? held=null;Task? holding=null;
+        async Task Hold(Step step,CancellationToken token){
+            try{if(!await operations.WaitAsync(0,token))throw new InvalidOperationException("Aktion läuft");
+                try{await platform.Run(step,token);}finally{operations.Release();}
+            }catch(OperationCanceledException){}catch(Exception ex){try{await p.Send(new{type="error",error=Error(ex)},end.Token);}catch{}}
+        }
         try{
             await p.Send(new{type="hello",role=d.Role,board=Store.Current,state=latest,obs=obs.Snapshot(),catalog=platform.Catalog(),actions=Model.Kinds},c.RequestAborted);
             while(ws.State==WebSocketState.Open){
                 using var ms=new MemoryStream();WebSocketReceiveResult r;
                 do{r=await ws.ReceiveAsync(new ArraySegment<byte>(buf),c.RequestAborted);if(r.MessageType!=WebSocketMessageType.Text||ms.Length+r.Count>100000) return;ms.Write(buf,0,r.Count);}while(!r.EndOfMessage);
                 var m=JsonSerializer.Deserialize<Msg>(ms.ToArray(),Model.Json)??throw new ArgumentException();object result;
-                try{Auth(c);Limit(d.Id,180,10);result=await Dispatch(d,m,c.RequestAborted);}
+                try{Auth(c);Limit(d.Id,180,10);
+                    if(m.Op=="release"){held?.Cancel();continue;}
+                    if(m.Op=="press"){
+                        if(holding is {IsCompleted:false})continue;
+                        var b=Store.Current;Model.Require(m.Data.GetProperty("revision").GetInt64()==b.Revision,"Deck geändert");
+                        var pg=b.Profiles.Single(x=>x.Id==b.Active).Pages.Single(x=>x.Id==Str(m.Data,"page"));
+                        var slot=m.Data.GetProperty("slot").GetInt32();Model.Require(slot is >=0 and <15,"Slot ungültig");
+                        var binding=pg.Keys[slot].Action;if(binding is not {Kind:"hotkey",Value:"ptt"})throw new UnauthorizedAccessException();
+                        held?.Dispose();held=CancellationTokenSource.CreateLinkedTokenSource(c.RequestAborted,end.Token);held.CancelAfter(30000);
+                        holding=Hold(binding,held.Token);continue;
+                    }
+                    result=await Dispatch(d,m,c.RequestAborted);}
                 catch(Exception ex){await p.Send(new{type="error",error=Error(ex)},c.RequestAborted);continue;}
                 await p.Send(new{type="result",result},c.RequestAborted);
             }
-        }catch(Exception ex)when(ex is WebSocketException or IOException or OperationCanceledException or JsonException or ArgumentException){}finally{peers.TryRemove(id,out _);}
+        }catch(Exception ex)when(ex is WebSocketException or IOException or OperationCanceledException or JsonException or ArgumentException){}finally{held?.Cancel();if(holding!=null)await holding;held?.Dispose();peers.TryRemove(id,out _);}
     }
     async Task Broadcast(object msg){await Task.WhenAll(peers.Values.Select(async p=>{try{await p.Send(msg,end.Token);}catch{p.Abort();}}));}
     async Task Monitor(){while(!end.IsCancellationRequested){try{if(!peers.IsEmpty){

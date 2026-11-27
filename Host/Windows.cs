@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace NovaLab;
-public record Target(string Id,string Name,string Type,string Path,string Args="",string ProcessName="",string Icon="");
+public record Target(string Id,string Name,string Type,string Path,string Args="",string ProcessName="",string Icon="",string Category="");
 public sealed class LocalConfig {
     public string ObsSecret{get;set;}="";public int ObsPort{get;set;}=4455;
     public string Output{get;set;}="";public List<Target> Custom{get;set;}=[];public List<string> Approved{get;set;}=[];
@@ -43,7 +43,7 @@ public sealed class WindowsEngine : IPlatform {
                 var id=Path.GetFileNameWithoutExtension(f)[12..];if(!uint.TryParse(id,out _))continue;var name=Regex.Match(File.ReadAllText(f),""" "name"\s+"([^"]+)" """.Trim()).Groups[1].Value;if(name.Length>0)all.Add(new(Stable("steam"+id),name,"steam","steam://rungameid/"+id));}}}
         lock(gate)found=all.OrderBy(x=>x.Name).ToArray();
     }
-    public IReadOnlyList<CatalogItem> Catalog(){lock(gate)return found.Concat(Config.Custom).Select(t=>new CatalogItem(t.Id,t.Name,t.Type,t.Icon)).ToArray();}
+    public IReadOnlyList<CatalogItem> Catalog(){lock(gate)return found.Concat(Config.Custom).Select(t=>new CatalogItem(t.Id,t.Name,t.Type,t.Icon,t.Category)).ToArray();}
     Target Find(string id){lock(gate){var all=Config.Custom.Concat(found);
         var t=id.StartsWith("find:")?all.FirstOrDefault(t=>t.Name.Equals(id[5..],StringComparison.OrdinalIgnoreCase))??all.FirstOrDefault(t=>t.Name.Contains(id[5..],StringComparison.OrdinalIgnoreCase)):all.FirstOrDefault(t=>t.Id==id);
         return t??throw new InvalidOperationException("Programm oder Freigabe fehlt · "+id);}}
@@ -60,7 +60,7 @@ public sealed class WindowsEngine : IPlatform {
         if(s.Kind=="system.lock"){if(!Native.LockWorkStation())throw new InvalidOperationException("Windows lehnt Sperren ab");return "Sperren angefordert";}
         if(s.Kind is "system.restart" or "system.shutdown"){Process.Start(new ProcessStartInfo(Path.Combine(Environment.SystemDirectory,"shutdown.exe"),s.Kind=="system.restart"?"/r /t 30":"/s /t 30"){UseShellExecute=false,CreateNoWindow=true})?.Dispose();return "Windows-Abschaltung in 30 Sekunden angefordert";}
         var t=Find(s.Target);
-        if(s.Kind=="hotkey"){Model.Require(t.Type=="hotkey","Lokale Hotkey-Freigabe erforderlich");return await Native.Shortcut(t,ct);}
+        if(s.Kind=="hotkey"){Model.Require(t.Type=="hotkey","Lokale Hotkey-Freigabe erforderlich");return await Native.Shortcut(t,ct,s.Value=="ptt");}
         if(s.Kind.StartsWith("sound")){Model.Require(t.Type=="sound","Sound fehlt");if(s.Kind=="sound.stop"){sounds.Stop(t.Id);return "Sound wird gestoppt";}
             var options=s.Value.Split(',');int Number(int i,int fallback,int max)=>options.Length>i&&int.TryParse(options[i],out var n)?Math.Clamp(n,0,max):fallback;
             sounds.Play(t,Number(0,80,100),Number(1,0,1)==1,Number(2,0,10000),Number(3,0,10000),Config.Output);return "Wiedergabe gestartet";}
@@ -91,10 +91,10 @@ static class Native {
     [StructLayout(LayoutKind.Sequential)]struct Input{public uint type;public Union data;}
     [DllImport("user32.dll",SetLastError=true)]static extern uint SendInput(uint n,Input[] input,int size);
     static void Press(ushort key,bool up){var input=new Input{type=1,data=new Union{key=new KeyInput{vk=key,flags=up?2u:0}}};if(SendInput(1,[input],Marshal.SizeOf<Input>())!=1)throw new InvalidOperationException("Windows hat die Eingabe abgelehnt (Fensterrechte prüfen)");}
-    public static async Task<string> Shortcut(Target t,CancellationToken ct){
+    public static async Task<string> Shortcut(Target t,CancellationToken ct,bool hold){
         if(t.ProcessName.Length>0&&!Foreground().Equals(t.ProcessName,StringComparison.OrdinalIgnoreCase))throw new InvalidOperationException("Zielprogramm zuerst in den Vordergrund holen");
         var keys=t.Path.Split('+').Select(v=>(ushort)int.Parse(v)).ToArray();var held=new Stack<ushort>();
-        try{foreach(var k in keys){Press(k,false);held.Push(k);}await Task.Delay(Math.Clamp(int.Parse(t.Args),35,5000),ct);}finally{while(held.TryPop(out var k))Press(k,true);}
+        try{foreach(var k in keys){Press(k,false);held.Push(k);}await Task.Delay(hold?30000:Math.Clamp(int.Parse(t.Args),35,5000),ct);}finally{while(held.TryPop(out var k))Press(k,true);}
         return "Tastenkürzel gesendet · Programmzustand unbekannt";
     }
 }

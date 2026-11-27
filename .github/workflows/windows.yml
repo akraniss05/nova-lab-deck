@@ -30,7 +30,9 @@ jobs:
         run: |
           $nsis = "${env:ProgramFiles(x86)}\NSIS\makensis.exe"
           if (!(Test-Path $nsis)) { choco install nsis -y --no-progress }
-          & $nsis packaging/installer.nsi
+          Push-Location packaging
+          & $nsis installer.nsi
+          Pop-Location
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - name: Verify installer and uninstaller in isolated directory
         shell: pwsh

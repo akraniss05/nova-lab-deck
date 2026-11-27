@@ -15,6 +15,7 @@ function targetOptions(s){
  if(s.kind==='hotkey')return cats(['hotkey']);if(['sound','sound.stop'].includes(s.kind))return cats(['sound']);
  if(s.kind==='page')return profile().pages.map(x=>[x.id,x.name]);if(s.kind==='profile')return S.board.profiles.map(x=>[x.id,x.name]);if(s.kind==='view')return ['deck','audio','media','obs','system','sounds','apps','settings'];
  if(s.kind==='obs.scene')return (o.scene?.scenes||[]).map(x=>x.sceneName);if(s.kind==='obs.source')return (o.sources?.sceneItems||[]).map(x=>x.sourceName);if(['obs.volume','obs.mute'].includes(s.kind))return (o.inputs?.inputs||[]).map(x=>x.inputName);if(s.kind==='obs.transition')return (o.transitions?.transitions||[]).map(x=>x.transitionName);
+ if(s.kind==='audio.default')return (S.state?.audio?.devices||[]).map(d=>[d.id,d.name]);
  if(s.kind==='audio.preset')return S.state?.audio?.presets||[];if(s.kind.startsWith('audio.'))return [...new Set(['@master','@mic','Spotify','Discord',...(S.state?.audio?.channels||[]).map(x=>x.id)])];
  if(s.kind.startsWith('media.'))return ['spotify',...(S.state?.media?.sessions||[]).map(x=>x.id)];return null;
 }
@@ -23,6 +24,8 @@ function stepForm(s,changed,rerender,macro=false){
  const kind=select(actions,s.kind,k=>{changed();Object.assign(s,step(),{kind:k});rerender();});
  const opts=targetOptions(s);const items=[field(tr('Funktion','Action'),kind)];
  if(opts){const manual=input(s.target,v=>{s.target=v;},{maxLength:500});manual.onfocus=changed;items.push(field(tr('Ziel','Target'),select([['','…'],...opts],s.target,v=>{changed();s.target=v;manual.value=v;})),field(tr('Ziel-ID oder Name','Target ID or name'),manual));}
+ if(s.kind==='audio.default'){if(!s.value)s.value='Multimedia';items.push(field('Windows role',select(['Console','Multimedia','Communications'],s.value,v=>{changed();s.value=v;})));}
+ if(s.kind==='hotkey'){items.push(field('Push-to-talk',select([['','Tap'],['ptt',tr('Solange gedrückt (max. 30 s)','While pressed (max 30 s)')]],s.value,v=>{changed();s.value=v;})));}
  if(['timer','delay','sound','audio.set','audio.delta','audio.preset','obs.volume','media.seek'].includes(s.kind)){
  const v=input(s.value,x=>s.value=x,{placeholder:s.kind==='sound'?'80,0,0,250':s.kind==='audio.preset'?'apply':'0'});v.onfocus=changed;items.push(field(s.kind==='sound'?tr('Pegel, Loop (0/1), Fade-in ms, Fade-out ms','Volume, loop (0/1), fade-in ms, fade-out ms'):tr('Wert','Value'),v));}
  if(macro){items.push(field(tr('Wiederholungen','Repeat'),input(s.repeat||1,v=>s.repeat=+v,{type:'number',min:1,max:8})),field(tr('Nur bei aktivem Prozess','Only if process is active'),input(s.when,v=>s.when=v)));}

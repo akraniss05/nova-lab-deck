@@ -7,9 +7,9 @@ public record KeyStyle(string Accent="#8B5CF6",string End="#37184f",string Text=
 public record Key(string Name="",string Icon="macro",Step? Action=null,string Description="", KeyStyle? Style=null,Step? Hold=null,Step? Double=null,List<Step>? Macro=null,string ActiveIcon="",KeyStyle? ActiveStyle=null);
 public record Page(string Id,string Name,List<Key> Keys);
 public record Profile(string Id,string Name,List<Page> Pages,string Match="");
-public record Preferences(string Theme="dark",string Language="de",int Motion=65,int Interval=2,bool AutoProfile=false);
+public record Preferences(string Theme="dark",string Language="de",int Motion=65,int Interval=2,bool AutoProfile=false,bool Notifications=true,string NoticePosition="bottom",bool Peaks=true);
 public record Board(int Schema,long Revision,List<Profile> Profiles,string Active,Preferences Settings);
-public record CatalogItem(string Id,string Name,string Type,string Icon="");
+public record CatalogItem(string Id,string Name,string Type,string Icon="",string Category="");
 public record PlatformState(object Audio,object Media,object System,string Foreground);
 public interface IPlatform : IDisposable {
     IReadOnlyList<CatalogItem> Catalog();
@@ -46,6 +46,7 @@ public static class Model {
     public static void Validate(Board b){
         Require(b.Schema==1 && b.Profiles is {Count:>0 and <=128} && b.Profiles.Any(p=>p.Id==b.Active),"Profil oder Format ungültig");
         var ids=new HashSet<string>();void ID(string id)=>Require(Regex.IsMatch(id,@"^[\w-]{1,64}$")&&ids.Add(id),"Doppelte oder ungültige ID");
+        Require(b.Settings.NoticePosition is "top" or "bottom","Position ungültig");
         Require(b.Settings.Theme is "dark" or "light" or "system" or "amoled" && b.Settings.Language is "de" or "en" && b.Settings.Interval is >=1 and <=15 && b.Settings.Motion is >=0 and <=100,"Einstellungen ungültig");
         foreach(var p in b.Profiles){ID(p.Id);Require(p.Name.Length is >0 and <=80 && p.Match.Length<=100 && p.Pages.Count is >0 and <=256,"Profil ungültig");
             foreach(var page in p.Pages){ID(page.Id);Require(page.Name.Length is >0 and <=80 && page.Keys.Count==15,"Eine Seite benötigt 15 Slots");
@@ -63,7 +64,7 @@ public static class Model {
     }
     static void CheckStyle(KeyStyle? s){if(s==null)return;foreach(var c in new[]{s.Accent,s.End,s.Text})Require(Regex.IsMatch(c,"^#[0-9a-fA-F]{6}$"),"Farbe ungültig");
         Require(s.Radius is >=0 and <=48 && s.Border is >=0 and <=8 && s.Size is >=9 and <=36 && s.Icon is >=20 and <=100 && s.Glow is >=0 and <=100 && s.Opacity is >=20 and <=100 && s.Motion is "none" or "pulse" or "wave" or "rgb" or "particles" && s.Align is "top" or "center" or "bottom","Stil ungültig");Image(s.Background);}
-    public static readonly string[] Kinds="none view page profile timer delay macro launch focus minimize maximize close hotkey sound sound.stop sound.stopAll audio.set audio.delta audio.toggle audio.preset media.play media.pause media.toggle media.next media.previous media.stop media.seek media.shuffle media.repeat obs.stream obs.startStream obs.stopStream obs.record obs.startRecord obs.stopRecord obs.pause obs.scene obs.source obs.mute obs.volume obs.studio obs.transition obs.camera obs.replay obs.clip obs.screenshot system.lock system.restart system.shutdown".Split();
+    public static readonly string[] Kinds="none view page profile timer delay macro launch focus minimize maximize close hotkey sound sound.stop sound.stopAll audio.set audio.delta audio.toggle audio.preset audio.default media.play media.pause media.toggle media.next media.previous media.stop media.seek media.shuffle media.repeat obs.stream obs.startStream obs.stopStream obs.record obs.startRecord obs.stopRecord obs.pause obs.scene obs.source obs.mute obs.volume obs.studio obs.transition obs.camera obs.replay obs.clip obs.screenshot system.lock system.restart system.shutdown".Split();
     public static void Check(Step s)=>Require(Kinds.Contains(s.Kind)&&s.Target.Length<=500&&s.Value.Length<=512&&s.When.Length<=100&&s.Repeat is >=1 and <=8,"Aktion ungültig");
 }
 public sealed class BoardStore {

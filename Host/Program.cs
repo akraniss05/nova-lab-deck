@@ -84,6 +84,11 @@ public sealed class HostWindow:Form {
     static string? Input(string title,string initial="",bool secret=false){using var f=new Form{Text=title,Size=new(510,140),StartPosition=FormStartPosition.CenterParent};var edit=new TextBox{Dock=DockStyle.Top,Text=initial,UseSystemPasswordChar=secret};var ok=new Button{Dock=DockStyle.Bottom,Text="Übernehmen",DialogResult=DialogResult.OK};f.Controls.Add(edit);f.Controls.Add(ok);f.AcceptButton=ok;return f.ShowDialog()==DialogResult.OK?edit.Text:null;}
     void ChooseCertificate(){using var d=new OpenFileDialog{Filter="Zertifikat|*.pfx;*.p12"};if(d.ShowDialog()!=DialogResult.OK)return;var pw=Input("PFX-Passwort","",true);if(pw==null)return;using var c=new X509Certificate2(d.FileName,pw);if(!c.HasPrivateKey)throw new ArgumentException("Privater Schlüssel fehlt");engine.Config.Certificate=d.FileName;engine.Config.CertSecret=LocalConfig.Protect(pw);engine.Save();Safe(Restart);}
     void AddFile(bool sound){using var d=new OpenFileDialog{Filter=sound?"Sounddateien|*.mp3;*.wav;*.ogg":"Programme / Dateien|*.*"};if(d.ShowDialog()!=DialogResult.OK)return;
+        if(sound){
+            var id=Model.Id();var category=Input("Sound-Kategorie","Soundboard");if(category==null)return;
+            var files=Path.Combine(dir,"sounds");Directory.CreateDirectory(files);var dest=Path.Combine(files,id+Path.GetExtension(d.FileName).ToLowerInvariant());
+            File.Copy(d.FileName,dest);try{engine.Add(new(id,Path.GetFileNameWithoutExtension(d.FileName),"sound",dest,Category:category));}catch{File.Delete(dest);throw;}Notify();return;
+        }
         var exe=d.FileName.EndsWith(".exe",StringComparison.OrdinalIgnoreCase);var args=exe?Input("Optionale Startparameter"):"";if(args==null)return;
         engine.Add(new(Model.Id(),Path.GetFileNameWithoutExtension(d.FileName),sound?"sound":exe?"app":"file",d.FileName,args,exe?Path.GetFileNameWithoutExtension(d.FileName):""));Notify();}
     void Folder(){using var d=new FolderBrowserDialog();if(d.ShowDialog()==DialogResult.OK){engine.Add(new(Model.Id(),Path.GetFileName(d.SelectedPath),"folder",d.SelectedPath));Notify();}}
