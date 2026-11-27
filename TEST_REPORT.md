@@ -7,3 +7,5 @@ Chromium mit 393 × 852, 852 × 393 und 1440 × 900 geprüft. 15 Tasten, drei bz
 Der Windows-Runner hat die native EXE ausgeführt. Eine Diagnose auf Windows Build 20348 fand 221 Programmziele und lieferte einen RAM-Messwert. Der Runner meldete null Audio- und Mediensitzungen und keinen NVIDIA-Messwert. Die Testmethode bestätigt daher weder Spotify-Wiedergabe noch die Lautstärkeisolation auf einem realen Streaming-PC.
 
 Der Windows-Workflow erzeugt die portable EXE und den NSIS-Installer, installiert in ein isoliertes Verzeichnis, vergleicht den SHA-256 der installierten EXE und prüft die Deinstallation. Der konkrete Laufstatus ist in GitHub Actions sichtbar. Für OBS mit echter Aufnahme, Hotkeys, Mikrofon und physische Geräte gilt die Abnahmeliste in TODO.md.
+
+Der Windows-Lauf 46013571378 hat Installation, Hashvergleich und Deinstallation erfolgreich ausgeführt. Beim wiederholten OBS-Test wurde die Übernahme des Szenenzustands korrigiert und eine Prüfung auf den tatsächlich veröffentlichten Szenennamen ergänzt.

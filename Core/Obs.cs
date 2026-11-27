@@ -26,7 +26,7 @@ public sealed class Obs(Func<(int Port,string Password)> config) : IDisposable {
         var id=Model.Id();var result=new TaskCompletionSource<JsonObject>(TaskCreationOptions.RunContinuationsAsynchronously);pending[id]=result;
         try{await Send(ws,new {op=6,d=new{requestType=type,requestId=id,requestData=args??new {}}},ct);var d=await result.Task.WaitAsync(TimeSpan.FromSeconds(5),ct);
             if(d["requestStatus"]?["result"]?.GetValue<bool>()!=true)throw new InvalidOperationException(d["requestStatus"]?["comment"]?.ToString()??"OBS hat die Aktion abgelehnt");
-            return d["responseData"] as JsonObject??new();
+            return d["responseData"]?.DeepClone() as JsonObject??new();
         }finally{pending.TryRemove(id,out _);}
     }
     async Task Listen(ClientWebSocket ws,CancellationToken ct){
@@ -43,7 +43,7 @@ public sealed class Obs(Func<(int Port,string Password)> config) : IDisposable {
                 var ident=new JsonObject{["rpcVersion"]=1,["eventSubscriptions"]=0};
                 if(hello["d"]?["authentication"] is JsonObject auth)ident["authentication"]=Hash(Hash(cfg.Password+auth["salt"])+auth["challenge"]);
                 await Send(ws,new {op=1,d=ident},init.Token);if((int?)(await Receive(ws,init.Token))["op"]!=2)throw new InvalidDataException("OBS-Anmeldung fehlgeschlagen");
-                socket=ws;Status="OBS verbunden";reader=Listen(ws,live.Token);
+                init.CancelAfter(Timeout.Infinite);socket=ws;Status="OBS verbunden";reader=Listen(ws,live.Token);
                 while(!reader.IsCompleted){
                     var state=new JsonObject();foreach(var pair in new[]{("stream","GetStreamStatus"),("record","GetRecordStatus"),("scene","GetSceneList"),("inputs","GetInputList"),("stats","GetStats"),("camera","GetVirtualCamStatus"),("replay","GetReplayBufferStatus"),("studio","GetStudioModeEnabled"),("transitions","GetSceneTransitionList")}){
                         try{state[pair.Item1]=await Call(pair.Item2,null,ct);}catch(InvalidOperationException){ }

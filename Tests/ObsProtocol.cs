@@ -20,7 +20,7 @@ static class ObsProtocol {
     server.MapGet("/",async(HttpContext c)=>{
         using var ws=await c.WebSockets.AcceptWebSocketAsync();
         async Task Send(object msg)=>await ws.SendAsync(JsonSerializer.SerializeToUtf8Bytes(msg),WebSocketMessageType.Text,true,c.RequestAborted);
-        async Task<JsonNode> Read(){var bytes=new byte[8192];var r=await ws.ReceiveAsync(new ArraySegment<byte>(bytes),c.RequestAborted);return JsonNode.Parse(bytes.AsSpan(0,r.Count))!;}
+        async Task<JsonNode> Read(){using var message=new MemoryStream();var bytes=new byte[8192];WebSocketReceiveResult r;do{r=await ws.ReceiveAsync(new ArraySegment<byte>(bytes),c.RequestAborted);if(r.MessageType==WebSocketMessageType.Close)throw new IOException();message.Write(bytes,0,r.Count);}while(!r.EndOfMessage);return JsonNode.Parse(message.ToArray())!;}
         try{
             await Send(new{op=0,d=new{rpcVersion=1,authentication=new{salt="salt",challenge="challenge"}}});var msg=await Read();
             if((int?)msg["op"]!=1||msg["d"]?["authentication"]?.ToString()!=Hash(Hash("test-password"+"salt")+"challenge"))throw new Exception("Invalid OBS challenge response");
@@ -38,6 +38,7 @@ static class ObsProtocol {
         await client.Run(new("obs.scene","#1"),token.Token);if(await scene.Task.WaitAsync(token.Token)!="Studio")throw new Exception("Scene mismatch");
         var denied=false;try{await client.Run(new("obs.clip"),token.Token);}catch(InvalidOperationException e){denied=e.Message=="Replay buffer inactive";}
         if(!denied)throw new Exception("OBS denial hidden");
-    }finally{token.Cancel();try{await loop;}catch(OperationCanceledException){}await server.StopAsync();}
+        while(JsonSerializer.SerializeToNode(client.Snapshot())?["data"]?["scene"]?["currentProgramSceneName"]?.ToString()!="Studio")await Task.Delay(15,token.Token);
+    }catch(Exception e){throw new Exception(client.Status,e);}finally{token.Cancel();try{await loop;}catch(OperationCanceledException){}await server.StopAsync();}
  }
 }
