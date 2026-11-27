@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace NovaLab;
 
-public record Device(string Id,string Name,string Role,string Hash);
+public record Device(string Id,string Name,string Role,string Hash,long Until=0);
 public record Msg(string Op, JsonElement Data);
 public sealed class Server : IAsyncDisposable {
     public BoardStore Store {get;}
@@ -46,7 +46,7 @@ public sealed class Server : IAsyncDisposable {
     static bool Private(IPAddress ip){if(ip.IsIPv4MappedToIPv6)ip=ip.MapToIPv4();if(IPAddress.IsLoopback(ip))return true;var a=ip.GetAddressBytes();return a.Length==4&&(a[0]==10||a[0]==192&&a[1]==168||a[0]==172&&a[1]>=16&&a[1]<=31);}
     public Server(string path,IPlatform engine,Obs obsClient,int port,IPAddress address,X509Certificate2? cert=null){
         dir=path;platform=engine;obs=obsClient;Store=new(path);BaseUrl=$"{(cert==null?"http":"https")}://{address}:{port}";
-        var f=Path.Combine(dir,"devices.json");if(File.Exists(f))foreach(var d in JsonSerializer.Deserialize<Device[]>(File.ReadAllText(f))??[])if(d.Role is "edit" or "control")devices[d.Hash]=d;
+        var f=Path.Combine(dir,"devices.json");if(File.Exists(f))foreach(var d in JsonSerializer.Deserialize<Device[]>(File.ReadAllText(f))??[])if((d.Role is "edit" or "control")&&d.Until>DateTimeOffset.UtcNow.ToUnixTimeSeconds())devices[d.Hash]=d;
         var b=WebApplication.CreateSlimBuilder();b.Logging.ClearProviders();b.WebHost.ConfigureKestrel(k=>{k.Limits.MaxRequestBodySize=8_500_000;k.Limits.MaxConcurrentConnections=64;k.AddServerHeader=false;
             void Bind(IPAddress a)=>k.Listen(a,port,o=>{if(cert!=null)o.UseHttps(cert);});Bind(IPAddress.Loopback);if(!IPAddress.IsLoopback(address)){Model.Require(Private(address),"Private LAN-IP erforderlich");Bind(address);}});
         web=b.Build();web.UseWebSockets(new WebSocketOptions{KeepAliveInterval=TimeSpan.FromSeconds(20)});
@@ -63,7 +63,7 @@ public sealed class Server : IAsyncDisposable {
         web.MapPost("/cmd",async(HttpContext c)=>{var d=Auth(c);Limit(d.Id,180,10);var m=await c.Request.ReadFromJsonAsync<Msg>()??throw new ArgumentException();return Results.Json(await Dispatch(d,m,c.RequestAborted),Model.Json);});
         web.MapGet("/ws",Socket);
         web.MapGet("/{**path}",(HttpContext c,string? path)=>{
-            var key="web/"+(string.IsNullOrWhiteSpace(path)?"index.html":path);var stream=typeof(Server).Assembly.GetManifestResourceStream(key);
+            var key="web/"+(string.IsNullOrWhiteSpace(path)?"index.html":path);var stream=typeof(Server).Assembly.GetManifestResourceStream(key)??typeof(Server).Assembly.GetManifestResourceStream(key.Replace('/','\\'));
             if(stream==null)return Results.NotFound();var ext=Path.GetExtension(key);return Results.Stream(stream,ext switch{".js"=>"text/javascript",".css"=>"text/css",".json"=>"application/json",".svg"=>"image/svg+xml",".webp"=>"image/webp",".png"=>"image/png",".webmanifest"=>"application/manifest+json",_=>"text/html"});});
     }
     static string Error(Exception ex)=>ex is UnauthorizedAccessException?"Zugriff verweigert":ex.GetBaseException().Message;
@@ -83,13 +83,13 @@ public sealed class Server : IAsyncDisposable {
         if(host)d=admin with{Hash=Hash(token)};
         else{if(!await approval.WaitAsync(0))throw new InvalidOperationException("Kopplung läuft");try{
             var role=await platform.Approve(name+" · "+ctx.Connection.RemoteIpAddress).WaitAsync(TimeSpan.FromMinutes(2),ctx.RequestAborted);
-            if(role is not ("control" or "edit"))throw new UnauthorizedAccessException();d=new(Model.Id(),name,role,Hash(token));
+            if(role is not ("control" or "edit"))throw new UnauthorizedAccessException();d=new(Model.Id(),name,role,Hash(token),DateTimeOffset.UtcNow.AddDays(30).ToUnixTimeSeconds());
         }finally{approval.Release();}}
         lock(security){devices[d.Hash]=d;if(!host)PersistDevices();}
         ctx.Response.Cookies.Append("nova",token,new CookieOptions{HttpOnly=true,SameSite=SameSiteMode.Strict,Secure=ctx.Request.IsHttps,MaxAge=host?null:TimeSpan.FromDays(30),Path="/"});
         return Results.Json(new {role=d.Role});
     }
-    Device Auth(HttpContext c){var token=c.Request.Cookies["nova"];if(token?.Length!=64||!devices.TryGetValue(Hash(token),out var d)||d.Role=="host"&&!IPAddress.IsLoopback(c.Connection.RemoteIpAddress!))throw new UnauthorizedAccessException();return d;}
+    Device Auth(HttpContext c){var token=c.Request.Cookies["nova"];if(token?.Length!=64||!devices.TryGetValue(Hash(token),out var d)||d.Role!="host"&&d.Until<=DateTimeOffset.UtcNow.ToUnixTimeSeconds()||d.Role=="host"&&!IPAddress.IsLoopback(c.Connection.RemoteIpAddress!))throw new UnauthorizedAccessException();return d;}
     sealed class Peer(WebSocket ws,Device d):IDisposable{
         readonly SemaphoreSlim gate=new(1);public Device Identity=>d;public void Abort()=>ws.Abort();
         public async Task Send(object msg,CancellationToken ct){using var timeout=CancellationTokenSource.CreateLinkedTokenSource(ct);timeout.CancelAfter(3500);await gate.WaitAsync(timeout.Token);try{await ws.SendAsync(JsonSerializer.SerializeToUtf8Bytes(msg,Model.Json),WebSocketMessageType.Text,true,timeout.Token);}finally{gate.Release();}}
@@ -119,6 +119,15 @@ public sealed class Server : IAsyncDisposable {
     async Task<object> Dispatch(Device d,Msg m,CancellationToken ct){
         var data=m.Data;var b=Store.Current;
         switch(m.Op){
+        case "host.devices":
+            if(d.Role!="host")throw new UnauthorizedAccessException();
+            return new{address=BaseUrl,devices=Devices.Select(x=>new{x.Id,x.Name,x.Role,online=peers.Values.Any(p=>p.Identity.Id==x.Id)}).ToArray()};
+        case "host.qr":
+            if(d.Role!="host")throw new UnauthorizedAccessException();
+            return new{image=platform.QR(PairLink()),address=BaseUrl,expires=DateTimeOffset.UtcNow.AddMinutes(2).ToUnixTimeSeconds()};
+        case "host.revoke":
+            if(d.Role!="host")throw new UnauthorizedAccessException();
+            Revoke(Str(data,"id"));return "Zugriff entzogen";
         case "info":return new{role=d.Role,board=b,catalog=platform.Catalog(),actions=Model.Kinds};
         case "logs":return log.ToArray();
         case "preview":
@@ -144,7 +153,7 @@ public sealed class Server : IAsyncDisposable {
         if(!jobs.TryAdd(d.Id,job))throw new InvalidOperationException("Aktion läuft");var results=new List<string>();
         try{await operations.WaitAsync(job.Token);try{foreach(var s in steps){for(int i=0;i<s.Repeat;i++){
             job.Token.ThrowIfCancellationRequested();if(!devices.ContainsKey(d.Hash))throw new UnauthorizedAccessException();if(s.When.Length>0&&!string.Equals(latest?.Foreground,s.When,StringComparison.OrdinalIgnoreCase)){results.Add("Bedingung nicht erfüllt");break;}
-            if(s.Kind is "obs.stream" or "system.lock" or "system.restart" or "system.shutdown" or "close"){if(!await platform.Confirm(s.Kind+" · "+s.Target).WaitAsync(job.Token))throw new OperationCanceledException("Am PC abgelehnt");}
+            if(s.Kind is "obs.stream" or "obs.startStream" or "obs.stopStream" or "system.lock" or "system.restart" or "system.shutdown" or "close"){if(!await platform.Confirm(s.Kind+" · "+s.Target).WaitAsync(job.Token))throw new OperationCanceledException("Am PC abgelehnt");}
             string reply;switch(s.Kind){
                 case "none":throw new ArgumentException("Slot noch frei");case "delay":await Task.Delay(Math.Clamp(int.Parse(s.Value),0,30000),job.Token);reply="Verzögerung beendet";break;
                 case "profile":var current=Store.Current;var changed=Store.Save(current with{Active=s.Target});await Broadcast(new{type="board",board=changed});reply="Profil gewechselt";break;

@@ -6,10 +6,21 @@ using QRCoder;
 
 namespace NovaLab;
 static class Program {
-    [STAThread] static void Main(){ApplicationConfiguration.Initialize();
+    [STAThread] static int Main(string[] args){ApplicationConfiguration.Initialize();
+        if(args is ["--diagnose",var output]){
+            var temp=Path.Combine(Path.GetTempPath(),"NovaLab-Probe-"+Guid.NewGuid());
+            try{using var probe=new WindowsEngine(temp,_=>Task.FromResult(false),_=>Task.FromResult<string?>(null));probe.Scan();
+                var state=Task.Run(()=>probe.Read(CancellationToken.None)).GetAwaiter().GetResult();
+                var json=System.Text.Json.JsonSerializer.SerializeToNode(state,Model.Json)!;
+                var result=new{platform=Environment.OSVersion.ToString(),applications=probe.Catalog().Count,audioChannels=json["audio"]?["channels"]?.AsArray().Count,
+                    audioError=json["audio"]?["error"]?.ToString(),mediaSessions=json["media"]?["sessions"]?.AsArray().Count,mediaError=json["media"]?["error"]?.ToString(),
+                    ramMeasured=json["system"]?["ram"]!=null,gpuMeasured=json["system"]?["gpu"]!=null};
+                File.WriteAllText(output,System.Text.Json.JsonSerializer.Serialize(result));return result.ramMeasured?0:2;
+            }finally{if(Directory.Exists(temp))Directory.Delete(temp,true);}
+        }
         using var single=new Mutex(true,@"Local\NovaLabDeckHost",out var first);
-        if(!first){MessageBox.Show("NovaLab Deck läuft bereits. Öffne das violette Symbol im Infobereich.","NovaLab Deck");return;}
-        try{Application.Run(new HostWindow());}catch(Exception e){MessageBox.Show(e.Message,"NovaLab Deck");}
+        if(!first){MessageBox.Show("NovaLab Deck läuft bereits. Öffne das violette Symbol im Infobereich.","NovaLab Deck");return 0;}
+        try{Application.Run(new HostWindow());return 0;}catch(Exception e){MessageBox.Show(e.Message,"NovaLab Deck");return 1;}
     }
 }
 public sealed class HostWindow:Form {

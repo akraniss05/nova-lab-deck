@@ -17,6 +17,7 @@ public interface IPlatform : IDisposable {
     Task<PlatformState> Read(CancellationToken ct);
     Task<bool> Confirm(string message);
     Task<string?> Approve(string name);
+    string QR(string link)=>throw new PlatformNotSupportedException();
 }
 public static class Model {
     public static JsonSerializerOptions Json = new(JsonSerializerDefaults.Web){MaxDepth=32};
@@ -29,6 +30,8 @@ public static class Model {
             ("TikTok Studio","tiktok",new("launch","find:TikTok LIVE Studio")),("Discord","discord",new("launch","find:Discord")),("Spotify","spotify",new("launch","find:Spotify")),
             ("Leiser","quieter",new("audio.delta","@master","-5")),("Lauter","louder",new("audio.delta","@master","5")),("Soundboard","pads",new("view","sounds")),("Audio-Mixer","sliders-horizontal",new("view","audio"))];
         for(int i=0;i<15;i++) p.Keys[i]=new(keys[i].Item1,keys[i].Item2,keys[i].Item3);
+        p.Keys[2]=p.Keys[2] with {ActiveIcon="mic-off",ActiveStyle=new KeyStyle(Accent:"#ff486f")};
+        p.Keys[11]=p.Keys[11] with {Hold=p.Keys[11].Action};p.Keys[12]=p.Keys[12] with {Hold=p.Keys[12].Action};
         var second=Blank("Produktion");
         (string,string,Step)[] more=[("Replay","rewind",new("obs.replay")),("Clip speichern","clapperboard",new("obs.clip")),("Studio-Modus","panels-top-left",new("obs.studio")),("Player","disc-3",new("view","media")),("Monitoring","tower",new("view","system")),("Desktop stumm","volume-x",new("audio.toggle","@master"))];
         for(int i=0;i<more.Length;i++)second.Keys[i]=new(more[i].Item1,more[i].Item2,more[i].Item3);
@@ -60,7 +63,7 @@ public static class Model {
     }
     static void CheckStyle(KeyStyle? s){if(s==null)return;foreach(var c in new[]{s.Accent,s.End,s.Text})Require(Regex.IsMatch(c,"^#[0-9a-fA-F]{6}$"),"Farbe ungültig");
         Require(s.Radius is >=0 and <=48 && s.Border is >=0 and <=8 && s.Size is >=9 and <=36 && s.Icon is >=20 and <=100 && s.Glow is >=0 and <=100 && s.Opacity is >=20 and <=100 && s.Motion is "none" or "pulse" or "wave" or "rgb" or "particles" && s.Align is "top" or "center" or "bottom","Stil ungültig");Image(s.Background);}
-    public static readonly string[] Kinds="none view page profile timer delay macro launch focus minimize maximize close hotkey sound sound.stop sound.stopAll audio.set audio.delta audio.toggle audio.preset media.play media.pause media.toggle media.next media.previous media.stop media.seek media.shuffle media.repeat obs.stream obs.record obs.pause obs.scene obs.source obs.mute obs.volume obs.studio obs.transition obs.camera obs.replay obs.clip obs.screenshot system.lock system.restart system.shutdown".Split();
+    public static readonly string[] Kinds="none view page profile timer delay macro launch focus minimize maximize close hotkey sound sound.stop sound.stopAll audio.set audio.delta audio.toggle audio.preset media.play media.pause media.toggle media.next media.previous media.stop media.seek media.shuffle media.repeat obs.stream obs.startStream obs.stopStream obs.record obs.startRecord obs.stopRecord obs.pause obs.scene obs.source obs.mute obs.volume obs.studio obs.transition obs.camera obs.replay obs.clip obs.screenshot system.lock system.restart system.shutdown".Split();
     public static void Check(Step s)=>Require(Kinds.Contains(s.Kind)&&s.Target.Length<=500&&s.Value.Length<=512&&s.When.Length<=100&&s.Repeat is >=1 and <=8,"Aktion ungültig");
 }
 public sealed class BoardStore {

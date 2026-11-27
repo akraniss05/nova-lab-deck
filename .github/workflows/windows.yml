@@ -1,0 +1,52 @@
+name: Windows build and checks
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Integration tests
+        run: dotnet run -c Release --project Tests
+      - name: Build portable Windows x64 host
+        run: dotnet publish Host/Host.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -o out/portable
+      - name: Probe native Windows APIs
+        shell: pwsh
+        run: |
+          $result = Join-Path $PWD 'out/native-probe.json'
+          $probe = Start-Process out/portable/NovaLabDeck.exe -ArgumentList "--diagnose `"$result`"" -PassThru -Wait
+          if ($probe.ExitCode -ne 0) { throw "Native probe exit $($probe.ExitCode)" }
+          Get-Content $result
+      - name: Build per-user installer
+        shell: pwsh
+        run: |
+          $nsis = "${env:ProgramFiles(x86)}\NSIS\makensis.exe"
+          if (!(Test-Path $nsis)) { choco install nsis -y --no-progress }
+          & $nsis packaging/installer.nsi
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Verify installer and uninstaller in isolated directory
+        shell: pwsh
+        run: |
+          $install = Join-Path $env:RUNNER_TEMP 'NovaLabSmoke'
+          $p = Start-Process out/NovaLabDeck-Setup-x64.exe -ArgumentList "/S /D=$install" -PassThru -Wait
+          if ($p.ExitCode -ne 0 -or !(Test-Path "$install/NovaLabDeck.exe")) { throw 'Install failed' }
+          $hash = (Get-FileHash "$install/NovaLabDeck.exe").Hash
+          if ($hash -ne (Get-FileHash out/portable/NovaLabDeck.exe).Hash) { throw 'Installed bytes differ' }
+          Start-Process "$install/Uninstall.exe" -ArgumentList '/S' -Wait
+          for ($i=0; $i -lt 30 -and (Test-Path "$install/NovaLabDeck.exe"); $i++) { Start-Sleep -Seconds 1 }
+          if (Test-Path "$install/NovaLabDeck.exe") { throw 'Uninstall failed' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NovaLab-Deck-Windows-x64
+          path: |
+            out/portable/NovaLabDeck.exe
+            out/NovaLabDeck-Setup-x64.exe
+            out/native-probe.json

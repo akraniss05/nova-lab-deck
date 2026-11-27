@@ -51,6 +51,7 @@ static class Program {
    var id=host.Devices.Single().Id;host.Revoke(id);Assert((await Post("/cmd",new{op="info",data=new{}})).StatusCode==HttpStatusCode.Forbidden,"device revocation takes effect");
    engine.Role="control";await Post("/pair",new{code=host.PairLink().Split('=')[1],name="Remote"});Assert((await Post("/cmd",new{op="save",data=host.Store.Current})).StatusCode==HttpStatusCode.Forbidden,"read-only layout permission enforced");
    Assert((await Post("/cmd",new{op="test",data=new[]{new Step("launch","spotify")}})).StatusCode==HttpStatusCode.Forbidden,"control device cannot inject macro steps");
+   await ObsProtocol.Test();Assert(true,"OBS v5 challenge/response, scene lookup and rejected request handling");
    Console.WriteLine(tests+" passed");
   }finally{Directory.Delete(path,true);}
  }

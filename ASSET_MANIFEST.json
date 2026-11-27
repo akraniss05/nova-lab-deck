@@ -1645,5 +1645,307 @@
   "category": "Browser",
   "file": "assets/panel-top-open.svg",
   "origin": "Lucide geometry · NovaLab layered vector"
+ },
+ {
+  "id": "brand-obsstudio",
+  "name": "OBS Studio",
+  "category": "Streaming",
+  "file": "assets/brand-obsstudio.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://commons.wikimedia.org/wiki/File:OBS.svg",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-twitch",
+  "name": "Twitch",
+  "category": "Streaming",
+  "file": "assets/brand-twitch.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://brand.twitch.tv",
+  "guidelines": "https://brand.twitch.tv",
+  "license": {}
+ },
+ {
+  "id": "brand-youtube",
+  "name": "YouTube",
+  "category": "Streaming",
+  "file": "assets/brand-youtube.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors",
+  "guidelines": "https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors",
+  "license": {}
+ },
+ {
+  "id": "brand-youtubestudio",
+  "name": "YouTube Studio",
+  "category": "Streaming",
+  "file": "assets/brand-youtubestudio.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.youtube.com",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-tiktok",
+  "name": "TikTok",
+  "category": "Streaming",
+  "file": "assets/brand-tiktok.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://tiktok.com",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-spotify",
+  "name": "Spotify",
+  "category": "Musik",
+  "file": "assets/brand-spotify.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://developer.spotify.com/documentation/general/design-and-branding/#using-our-logo",
+  "guidelines": "https://developer.spotify.com/documentation/general/design-and-branding/#using-our-logo",
+  "license": {}
+ },
+ {
+  "id": "brand-applemusic",
+  "name": "Apple Music",
+  "category": "Musik",
+  "file": "assets/brand-applemusic.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.apple.com/itunes/marketing-on-music/identity-guidelines.html#apple-music-icon",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-youtubemusic",
+  "name": "YouTube Music",
+  "category": "Musik",
+  "file": "assets/brand-youtubemusic.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://partnermarketinghub.withgoogle.com/#/brands",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-vlcmediaplayer",
+  "name": "VLC media player",
+  "category": "Musik",
+  "file": "assets/brand-vlcmediaplayer.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://code.videolan.org/videolan/vlc/-/blob/1ce7f686ee17a028d2d79627ae69f22d905f2e23/extras/package/macosx/asset_sources/vlc_app_icon.svg",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-steam",
+  "name": "Steam",
+  "category": "Gaming",
+  "file": "assets/brand-steam.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://partner.steamgames.com/doc/marketing/branding",
+  "guidelines": "https://partner.steamgames.com/doc/marketing/branding",
+  "license": {}
+ },
+ {
+  "id": "brand-epicgames",
+  "name": "Epic Games",
+  "category": "Gaming",
+  "file": "assets/brand-epicgames.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://dev.epicgames.com/docs/services/en-US/EpicAccountServices/DesignGuidelines/index.html#epicgamesbrandguidelines",
+  "guidelines": "https://dev.epicgames.com/docs/services/en-US/EpicAccountServices/DesignGuidelines/index.html#epicgamesbrandguidelines",
+  "license": {}
+ },
+ {
+  "id": "brand-roblox",
+  "name": "Roblox",
+  "category": "Gaming",
+  "file": "assets/brand-roblox.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.roblox.com",
+  "guidelines": "https://en.help.roblox.com/hc/en-us/articles/115001708126-Roblox-Name-and-Logo-Community-Usage-Guidelines",
+  "license": {}
+ },
+ {
+  "id": "brand-valorant",
+  "name": "Valorant",
+  "category": "Gaming",
+  "file": "assets/brand-valorant.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://commons.wikimedia.org/wiki/File:Valorant_logo_-_black_color_version.svg",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-counterstrike",
+  "name": "Counter-Strike",
+  "category": "Gaming",
+  "file": "assets/brand-counterstrike.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.counter-strike.net",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-rockstargames",
+  "name": "Rockstar Games",
+  "category": "Gaming",
+  "file": "assets/brand-rockstargames.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.rockstargames.com",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-fivem",
+  "name": "FiveM",
+  "category": "Gaming",
+  "file": "assets/brand-fivem.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://fivem.net",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-discord",
+  "name": "Discord",
+  "category": "Kommunikation",
+  "file": "assets/brand-discord.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://discord.com/branding",
+  "guidelines": "https://discord.com/branding",
+  "license": {}
+ },
+ {
+  "id": "brand-teamspeak",
+  "name": "TeamSpeak",
+  "category": "Kommunikation",
+  "file": "assets/brand-teamspeak.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://teamspeak.com",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-whatsapp",
+  "name": "WhatsApp",
+  "category": "Kommunikation",
+  "file": "assets/brand-whatsapp.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand",
+  "guidelines": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand",
+  "license": {}
+ },
+ {
+  "id": "brand-telegram",
+  "name": "Telegram",
+  "category": "Kommunikation",
+  "file": "assets/brand-telegram.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://telegram.org/tour/screenshots",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-zoom",
+  "name": "Zoom",
+  "category": "Kommunikation",
+  "file": "assets/brand-zoom.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://brand.zoom.us/media-library/",
+  "guidelines": "https://brand.zoom.us/usage-legal/",
+  "license": {}
+ },
+ {
+  "id": "brand-github",
+  "name": "GitHub",
+  "category": "Entwicklung",
+  "file": "assets/brand-github.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://github.com/logos",
+  "guidelines": "https://github.com/logos",
+  "license": {}
+ },
+ {
+  "id": "brand-blender",
+  "name": "Blender",
+  "category": "Entwicklung",
+  "file": "assets/brand-blender.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.blender.org/about/logo",
+  "guidelines": "https://www.blender.org/about/logo",
+  "license": {}
+ },
+ {
+  "id": "brand-robloxstudio",
+  "name": "Roblox Studio",
+  "category": "Entwicklung",
+  "file": "assets/brand-robloxstudio.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://create.roblox.com",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-python",
+  "name": "Python",
+  "category": "Entwicklung",
+  "file": "assets/brand-python.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.python.org/community/logos/",
+  "guidelines": "https://www.python.org/community/logos/",
+  "license": {}
+ },
+ {
+  "id": "brand-gnubash",
+  "name": "GNU Bash",
+  "category": "Entwicklung",
+  "file": "assets/brand-gnubash.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://github.com/odb/official-bash-logo/tree/61eff022f2dad3c7468f5deb4f06652d15f2c143",
+  "guidelines": "https://github.com/odb/official-bash-logo",
+  "license": {
+   "type": "MIT"
+  }
+ },
+ {
+  "id": "brand-vscodium",
+  "name": "VSCodium",
+  "category": "Entwicklung",
+  "file": "assets/brand-vscodium.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://github.com/VSCodium/vscodium.github.io/blob/ed028c57f10e6432ec55dfc34d4db1a83fba941d/img/codium_cnl.svg",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-googlechrome",
+  "name": "Google Chrome",
+  "category": "Browser",
+  "file": "assets/brand-googlechrome.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://www.google.com/chrome",
+  "guidelines": "https://partnermarketinghub.withgoogle.com/brands/chrome",
+  "license": {}
+ },
+ {
+  "id": "brand-firefoxbrowser",
+  "name": "Firefox Browser",
+  "category": "Browser",
+  "file": "assets/brand-firefoxbrowser.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://mozilla.design/firefox/logos-usage/",
+  "guidelines": "",
+  "license": {}
+ },
+ {
+  "id": "brand-brave",
+  "name": "Brave",
+  "category": "Browser",
+  "file": "assets/brand-brave.svg",
+  "origin": "Simple Icons 13.21.0 · NovaLab frame",
+  "source": "https://brave.com/brave-branding-assets",
+  "guidelines": "",
+  "license": {}
  }
 ]

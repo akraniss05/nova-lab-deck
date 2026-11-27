@@ -22,6 +22,7 @@ public sealed class WindowsEngine : IPlatform {
         dir=path;Directory.CreateDirectory(dir);confirm=check;approve=pair;var f=Path.Combine(dir,"host.json");
         Config=File.Exists(f)?JsonSerializer.Deserialize<LocalConfig>(File.ReadAllText(f))??new():new();mixer=new(dir);
     }
+    public string QR(string link){using var data=QRCoder.QRCodeGenerator.GenerateQrCode(link,QRCoder.QRCodeGenerator.ECCLevel.M);using var qr=new QRCoder.PngByteQRCode(data);return "data:image/png;base64,"+Convert.ToBase64String(qr.GetGraphic(6));}
     public void Save(){lock(gate){var f=Path.Combine(dir,"host.json");File.WriteAllText(f+".tmp",JsonSerializer.Serialize(Config));File.Move(f+".tmp",f,true);}}
     public void Add(Target target){lock(gate){Config.Custom.Add(target);Config.Approved.Add(target.Id);Save();}}
     static string Stable(string s)=>Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(s)))[..24];

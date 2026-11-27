@@ -65,6 +65,8 @@ public sealed class Obs(Func<(int Port,string Password)> config) : IDisposable {
         }
         string request;object? args=null;
         switch(s.Kind){
+        case "obs.startStream":request="StartStream";break;case "obs.stopStream":request="StopStream";break;
+        case "obs.startRecord":request="StartRecord";break;case "obs.stopRecord":request="StopRecord";break;
         case "obs.stream":request="ToggleStream";break;case "obs.record":request="ToggleRecord";break;
         case "obs.pause":request="ToggleRecordPause";break;case "obs.camera":request="ToggleVirtualCam";break;
         case "obs.replay":request="ToggleReplayBuffer";break;case "obs.clip":request="SaveReplayBuffer";break;
